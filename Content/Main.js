@@ -75,13 +75,16 @@
                     $.each(data, function (k, v) {
                         if (k == 'myjsonurl') {
                             if (v && v !== '') {
+                                ls.setItem('myjsonurl', v);
                                 getJsonData(v).then(function (data) {
                                     if (data) {
+                                        var tUrl= ls.getItem('myjsonurl');
                                         ls.clear();
                                         $.each(data, function (k, v) {
                                             //console.log(k + ' ' + v);
                                             ls.setItem(k, v);
                                         });
+                                        ls.setItem('myjsonurl', tUrl);
                                         location.reload();
                                     }
                                 });
