@@ -348,6 +348,27 @@ body {
 #NameSearch .clear:active {
   background-color: rgba(255, 255, 255, 0.15);
 }
+#CloudStorage {
+  position: fixed;
+  top: 40px;
+  right: 110px;
+  z-index: 999;
+  background-color: #000;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#Statistics {
+  position: fixed;
+  top: 70px;
+  right: 110px;
+  z-index: 999;
+  background-color: #000;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#Statistics textarea{
+  color: red;
+}
 .popupContainer {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, '微软雅黑';
 }

@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, minimal-ui" />
     <title>塞尔达传说:荒野之息-地图</title>
     <link href="Content/Leaflet/leaflet.css" rel="stylesheet" />
-    <link href="Content/Main.min.css" rel="stylesheet" />
+    <link href="Content/Main.css" rel="stylesheet" />
     <script src="Content/jquery-2.2.0.min.js"></script>
+    <script src="Content/notify.min.js"></script>
     <script src="Content/Leaflet/leaflet.js"></script>
     <script src="Content/ShrinesJapanese.js"></script>
     <script src="Content/ShrinesVideo.js"></script>
@@ -15,6 +17,7 @@
     <script src="Content/Marker.js"></script>
     <script src="Content/Main.js"></script>
 </head>
+
 <body>
     <div id="TypeSwitch">
         <strong>类型筛选</strong>
@@ -24,8 +27,17 @@
         <input id="KeyWords" type="text" value="" placeholder="搜索" />
         <span id="ClearKeyword" class="clear">清除</span>
     </div>
+    <div id="CloudStorage">
+        <button id="SaveJsonData">SaveJsonData</button>
+        <button id="GetJsonData">GetJsonData</button>
+        <button id="CheckJsonData">CheckJsonData</button>
+    </div>
+    <div id="Statistics">
+        <textarea id="StatOutput" ></textarea>
+    </div>
     <div id="MapContainer">
 
     </div>
 </body>
+
 </html>

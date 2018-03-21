@@ -1,4 +1,121 @@
 ﻿$(function () {
+    var globalUrl = 'https://api.myjson.com/bins/svftn';
+    //Save actual myjson uri
+    function UpdateConfigUri(updatedData) {
+        $.ajax({
+            url: globalUrl,
+            type: "PUT",
+            data: updatedData,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                localStorage.setItem('myjsonurl', data.uri);
+                $.notify("Saved the configuration to cloud", "success");
+            }
+        });
+    }
+
+    function MyJsonStorage(data) {
+        $.ajax({
+            url: "https://api.myjson.com/bins",
+            type: "POST",
+            data: data,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, textStatus, jqXHR) {
+                localStorage.setItem('myjsonurl', data.uri);
+                $.notify("Saved to " + data.uri, "success");
+                var d = {
+                    'myjsonurl': data.uri
+                };
+                UpdateConfigUri(JSON.stringify(d));
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                // $.notify("Status: " + textStatus);
+                // $.notify("Error: " + errorThrown); 
+                $.notify("An error has occurred", "error");
+            }
+
+        });
+    };
+
+    function getJsonData(url) {
+        return $.getJSON(url).then(function (data) {
+            return data;
+        });
+    }
+
+    function openInNewTab(url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
+
+    function exportLSData() {
+        ls = localStorage;
+        var tmp = {};
+        $.each(ls, function (k, v) {
+            if (k != 'myjsonurl' && k != 'length' && v !== 0)
+                tmp[k] = v;
+        });
+        return tmp;
+    }
+
+    $("#SaveJsonData").click(function () {
+        var data = JSON.stringify(exportLSData());
+
+        MyJsonStorage(data);
+    });
+
+    $("#GetJsonData").click(function () {
+        ls = localStorage;
+        jUrl = globalUrl;
+        if (jUrl) {
+            return getJsonData(jUrl).then(function (data) {//Get actual myjson uri
+                if (data) {
+                    $.each(data, function (k, v) {
+                        if (k == 'myjsonurl') {
+                            if (v && v !== '') {
+                                getJsonData(v).then(function (data) {
+                                    if (data) {
+                                        ls.clear();
+                                        $.each(data, function (k, v) {
+                                            //console.log(k + ' ' + v);
+                                            ls.setItem(k, v);
+                                        });
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+
+    });
+
+    $("#CheckJsonData").click(function () {
+        ls = localStorage;
+        jUrl = ls.getItem('myjsonurl');
+        if (jUrl) {
+            openInNewTab(jUrl);
+        }
+    });
+
+    function CalcUnlockedTemple() {
+        var data = exportLSData();
+        //console.log(data);
+        var count = 0;
+        $.each(data, function (k, v) {
+            if (v == 1)
+                count++;
+        });
+        $("#StatOutput").val("已解锁神庙数：" + count);
+    }
+
+    CalcUnlockedTemple();
+
     var bounds = new L.LatLngBounds(new L.LatLng(-49.875, 34.25), new L.LatLng(-206, 221));
 
     var map = L.map('MapContainer', {
@@ -148,6 +265,7 @@
     }
 
     var cacheMarker = [];
+
     function refreshMarker(from) {
         $.each(cacheMarker, function () {
             this.remove();
@@ -238,6 +356,27 @@
 
 });
 
+function exportLSData() {
+    ls = localStorage;
+    var tmp = {};
+    $.each(ls, function (k, v) {
+        if (k != 'myjsonurl' && k != 'length' && v !== 0)
+            tmp[k] = v;
+    });
+    return tmp;
+}
+
+function CalcUnlockedTemple() {
+    var data = exportLSData();
+    //console.log(data);
+    var count = 0;
+    $.each(data, function (k, v) {
+        if (v == 1)
+            count++;
+    });
+    $("#StatOutput").val("已解锁神庙数：" + count);
+}
+
 function MarkPoint(element) {
     var that = $(element);
     var key = that.attr("data-key");
@@ -247,7 +386,7 @@ function MarkPoint(element) {
     localStorage.setItem(key, newValue ? "1" : "");
 
     $('#MapContainer .leaflet-marker-pane .mark-' + key).toggleClass("marked", newValue);
-
+    CalcUnlockedTemple();
 }
 
 function CopyName(text) {
