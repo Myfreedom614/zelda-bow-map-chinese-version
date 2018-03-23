@@ -70,7 +70,7 @@
         ls = localStorage;
         jUrl = globalUrl;
         if (jUrl) {
-            return getJsonData(jUrl).then(function (data) {//Get actual myjson uri
+            return getJsonData(jUrl).then(function (data) { //Get actual myjson uri
                 if (data) {
                     $.each(data, function (k, v) {
                         if (k == 'myjsonurl') {
@@ -78,7 +78,7 @@
                                 ls.setItem('myjsonurl', v);
                                 getJsonData(v).then(function (data) {
                                     if (data) {
-                                        var tUrl= ls.getItem('myjsonurl');
+                                        var tUrl = ls.getItem('myjsonurl');
                                         ls.clear();
                                         $.each(data, function (k, v) {
                                             //console.log(k + ' ' + v);
@@ -105,19 +105,6 @@
             openInNewTab(jUrl);
         }
     });
-
-    function CalcUnlockedTemple() {
-        var data = exportLSData();
-        //console.log(data);
-        var count = 0;
-        $.each(data, function (k, v) {
-            if (v == 1)
-                count++;
-        });
-        $("#StatOutput").val("已解锁神庙数：" + count);
-    }
-
-    CalcUnlockedTemple();
 
     var bounds = new L.LatLngBounds(new L.LatLng(-49.875, 34.25), new L.LatLng(-206, 221));
 
@@ -174,6 +161,33 @@
         "1942": "头目(Hinox)",
         "1947": "头目(Molduga)",
     }
+
+    function CalcUnlockedTypes() {
+        var data = exportLSData();
+        //console.log(data);
+        $("#StatOutput").val(''); //Reset output
+
+        for (var key in typeChinese) {
+            if (typeChinese.hasOwnProperty(key)) {
+                //console.log(key + " -> " + typeChinese[key]);
+                var count = 0;
+                $.each(data, function (k, v) {
+                    if (k.substring(0, key.length) === key && v == 1)
+                        count++;
+                });
+                if (count > 0) {
+                    if ($("#StatOutput").val() !== '') $("#StatOutput").val($("#StatOutput").val() + '\n');
+                    $("#StatOutput").val($("#StatOutput").val() + "已解锁" + typeChinese[key] + "数：" + count);
+                }
+            }
+        }
+
+        var scroll_height = $("#StatOutput").get(0).scrollHeight;
+        $("#StatOutput").css('height', scroll_height + 'px');
+    }
+
+    CalcUnlockedTypes();
+
     var typeColor = {
         "1937": "rgb(228,78,227)",
         "1916": "rgb(55,181,0)",
@@ -359,6 +373,40 @@
 
 });
 
+var typeChinese = {
+    "1901": "兴趣点",
+    "1934": "回忆拍照",
+    "1935": "支线任务",
+    "1936": "破裂的墙",
+    "1946": "日记与书籍",
+    "1948": "烹饪锅",
+    "1949": "女神像",
+    "1902": "装备",
+    "1903": "武器",
+    "1904": "弓与箭",
+    "1905": "盾牌",
+    "1944": "宝箱(装备)",
+    "1910": "道具",
+    "1916": "种子(Korok)",
+    "1943": "宝箱(非装备)",
+    "1945": "宝石精灵(Blupee)",
+    "1920": "地标",
+    "1921": "村庄",
+    "1923": "Sheikah高塔",
+    "1925": "祠(神庙)",
+    "1926": "神兽",
+    "1937": "大精灵",
+    "1938": "马宿",
+    "1930": "怪物",
+    "1931": "怪物营地",
+    "1932": "守护者(Guardian)",
+    "1939": "巫师(Wizzrobe)",
+    "1940": "头目(半人马Lynel)",
+    "1941": "头目(Talus)",
+    "1942": "头目(Hinox)",
+    "1947": "头目(Molduga)",
+}
+
 function exportLSData() {
     ls = localStorage;
     var tmp = {};
@@ -369,15 +417,28 @@ function exportLSData() {
     return tmp;
 }
 
-function CalcUnlockedTemple() {
+function CalcUnlockedTypes() {
     var data = exportLSData();
     //console.log(data);
-    var count = 0;
-    $.each(data, function (k, v) {
-        if (v == 1)
-            count++;
-    });
-    $("#StatOutput").val("已解锁神庙数：" + count);
+    $("#StatOutput").val(''); //Reset output
+
+    for (var key in typeChinese) {
+        if (typeChinese.hasOwnProperty(key)) {
+            //console.log(key + " -> " + typeChinese[key]);
+            var count = 0;
+            $.each(data, function (k, v) {
+                if (k.substring(0, key.length) === key && v == 1)
+                    count++;
+            });
+            if (count > 0) {
+                if ($("#StatOutput").val() !== '') $("#StatOutput").val($("#StatOutput").val() + '\n');
+                $("#StatOutput").val($("#StatOutput").val() + "已解锁" + typeChinese[key] + "数：" + count);
+            }
+        }
+    }
+
+    var scroll_height = $("#StatOutput").get(0).scrollHeight;
+    $("#StatOutput").css('height', scroll_height + 'px');
 }
 
 function MarkPoint(element) {
@@ -389,7 +450,7 @@ function MarkPoint(element) {
     localStorage.setItem(key, newValue ? "1" : "");
 
     $('#MapContainer .leaflet-marker-pane .mark-' + key).toggleClass("marked", newValue);
-    CalcUnlockedTemple();
+    CalcUnlockedTypes();
 }
 
 function CopyName(text) {

@@ -9,6 +9,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 @font-face {
   font-family: 'icomoon';
   src: url('icomoon.eot?cibvmj');
@@ -16,148 +17,196 @@
   font-weight: normal;
   font-style: normal;
 }
+
 .icon-BotW_Cooking_Pot:before {
   content: "\e921";
 }
+
 .icon-BotW_Goddess_Statue:before {
   content: "\e922";
 }
+
 .icon-BotW_Hinox:before {
   content: "\e923";
 }
+
 .icon-BotW_Lynel:before {
   content: "\e924";
 }
+
 .icon-BotW_Wizzrobe:before {
   content: "\e925";
 }
+
 .icon-BotW_Armor:before {
   content: "\e900";
 }
+
 .icon-BotW_Beef:before {
   content: "\e901";
 }
+
 .icon-BotW_Blupee:before {
   content: "\e902";
 }
+
 .icon-BotW_Boss:before {
   content: "\e903";
 }
+
 .icon-BotW_Bow-n-Arrows:before {
   content: "\e904";
 }
+
 .icon-BotW_Dungeon:before {
   content: "\e905";
 }
+
 .icon-BotW_Enemies:before {
   content: "\e906";
 }
+
 .icon-BotW_Enemy-Camp:before {
   content: "\e907";
 }
+
 .icon-BotW_Equipment:before {
   content: "\e908";
 }
+
 .icon-BotW_Fish:before {
   content: "\e909";
 }
+
 .icon-BotW_Food-n-Materials:before {
   content: "\e90a";
 }
+
 .icon-BotW_Great-Fairy:before {
   content: "\e90b";
 }
+
 .icon-BotW_Guardian:before {
   content: "\e90c";
 }
+
 .icon-BotW_Herbs:before {
   content: "\e90d";
 }
+
 .icon-BotW_Items:before {
   content: "\e90e";
 }
+
 .icon-BotW_Korok-Seeds:before {
   content: "\e90f";
 }
+
 .icon-BotW_Locations:before {
   content: "\e910";
 }
+
 .icon-BotW_Memories:before {
   content: "\e911";
 }
+
 .icon-BotW_Mini-Game:before {
   content: "\e912";
 }
+
 .icon-BotW_Mushrooms:before {
   content: "\e913";
 }
+
 .icon-BotW_Points-of-Interest:before {
   content: "\e914";
 }
+
 .icon-BotW_Sheikah-Tower:before {
   content: "\e915";
 }
+
 .icon-BotW_Shields:before {
   content: "\e916";
 }
+
 .icon-BotW_Shrine-Quest:before {
   content: "\e917";
 }
+
 .icon-BotW_Shrines-of-Trials:before {
   content: "\e918";
 }
+
 .icon-BotW_Side-Quest:before {
   content: "\e919";
 }
+
 .icon-BotW_Stables:before {
   content: "\e91a";
 }
+
 .icon-BotW_Treasure-Chest:before {
   content: "\e91b";
 }
+
 .icon-BotW_Village:before {
   content: "\e91c";
 }
+
 .icon-BotW_Weapons:before {
   content: "\e91e";
 }
+
 .icon-BotW_Bomb:before {
   content: "\e91d";
 }
+
 .icon-pencil:before {
   content: "\e91f";
 }
+
 .icon-BotW_Book:before {
   content: "\e920";
 }
+
 .icon-search:before {
   content: "\e986";
 }
+
 .icon-link:before {
   content: "\e9cb";
 }
+
 .icon-cross:before {
   content: "\ea0f";
 }
+
 .icon-checkmark:before {
   content: "\ea10";
 }
+
 .icon-checkbox-checked:before {
   content: "\ea10";
 }
+
 .icon-checkbox-unchecked:before {
   content: "\ea11";
 }
+
 .icon-checkbox-checked2:before {
   content: "\ea52";
 }
+
 .icon-checkbox-unchecked2:before {
   content: "\ea53";
 }
+
 @font-face {
   font-family: HyliaSerif;
   src: url("HyliaSerifBeta-Regular.otf") format("opentype");
 }
+
 html,
 body {
   margin: 0;
@@ -167,10 +216,12 @@ body {
   overflow: hidden;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, '微软雅黑';
 }
+
 #MapContainer {
   width: 100%;
   height: 100%;
 }
+
 #MapContainer .leaflet-marker-pane .markIcon {
   border: solid 1px rgba(0, 0, 0, 0.2);
   padding: 1px;
@@ -181,6 +232,7 @@ body {
   text-align: center;
   box-sizing: border-box;
 }
+
 #MapContainer .leaflet-marker-pane .markIcon:before {
   font-size: 14px;
   color: #fff;
@@ -197,12 +249,15 @@ body {
   display: inline-block;
   margin-top: -6px;
 }
+
 #MapContainer .leaflet-marker-pane .marked {
   background-color: #666 !important;
 }
+
 #MapContainer .leaflet-marker-pane .marked:before {
   color: #999;
 }
+
 #TypeSwitch {
   position: fixed;
   top: 10px;
@@ -213,6 +268,7 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+
 #TypeSwitch strong {
   font-size: 14px;
   background-color: #000;
@@ -223,7 +279,8 @@ body {
   color: #fff;
   cursor: pointer;
 }
-#TypeSwitch > ul {
+
+#TypeSwitch>ul {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.8);
   overflow-y: auto;
@@ -235,18 +292,22 @@ body {
   top: 50px;
   max-height: 0;
 }
-#TypeSwitch > ul::-webkit-scrollbar {
+
+#TypeSwitch>ul::-webkit-scrollbar {
   width: 10px;
   background-color: transparent;
 }
-#TypeSwitch > ul::-webkit-scrollbar-thumb {
+
+#TypeSwitch>ul::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 5px;
 }
-#TypeSwitch > ul::-webkit-scrollbar-track {
+
+#TypeSwitch>ul::-webkit-scrollbar-track {
   background-color: transparent;
 }
-#TypeSwitch > ul > li {
+
+#TypeSwitch>ul>li {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -261,7 +322,8 @@ body {
   position: relative;
   white-space: nowrap;
 }
-#TypeSwitch > ul > li:after {
+
+#TypeSwitch>ul>li:after {
   content: " ";
   position: absolute;
   left: 8px;
@@ -270,14 +332,17 @@ body {
   width: 6px;
   border-radius: 50%;
 }
-#TypeSwitch > ul > li:hover,
-#TypeSwitch > ul > li:active {
+
+#TypeSwitch>ul>li:hover,
+#TypeSwitch>ul>li:active {
   background-color: rgba(255, 255, 255, 0.2);
 }
-#TypeSwitch > ul > li.current {
+
+#TypeSwitch>ul>li.current {
   background-color: dodgerblue;
 }
-#TypeSwitch > ul > li:before {
+
+#TypeSwitch>ul>li:before {
   font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
@@ -289,7 +354,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin-right: 10px;
 }
-#TypeSwitch > ul > li.title {
+
+#TypeSwitch>ul>li.title {
   font-size: 10px;
   line-height: 18px;
   color: #999;
@@ -297,18 +363,23 @@ body {
   border-top: solid 1px #666;
   padding-top: 5px;
 }
-#TypeSwitch > ul > li.title:hover {
+
+#TypeSwitch>ul>li.title:hover {
   background-color: transparent;
 }
-#TypeSwitch > ul > li.title.current {
+
+#TypeSwitch>ul>li.title.current {
   background-color: transparent;
 }
+
 #TypeSwitch:hover {
   height: 50%;
 }
+
 #TypeSwitch:hover ul {
   max-height: 90%;
 }
+
 #NameSearch {
   position: fixed;
   top: 10px;
@@ -318,6 +389,7 @@ body {
   border-radius: 5px;
   overflow: hidden;
 }
+
 #NameSearch input {
   padding: 0 10px;
   margin: 0;
@@ -331,9 +403,11 @@ body {
   color: #fff;
   width: 140px;
 }
+
 #NameSearch input::placeholder {
   color: #666;
 }
+
 #NameSearch .clear {
   color: #fff;
   line-height: 30px;
@@ -342,36 +416,54 @@ body {
   cursor: pointer;
   display: inline-block;
 }
+
 #NameSearch .clear:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 #NameSearch .clear:active {
   background-color: rgba(255, 255, 255, 0.15);
 }
+
 #CloudStorage {
   position: fixed;
   top: 40px;
   right: 110px;
-  z-index: 999;
+  z-index: 998;
   background-color: #000;
   border-radius: 5px;
   overflow: hidden;
 }
+
 #Statistics {
   position: fixed;
   top: 70px;
   right: 110px;
-  z-index: 999;
-  background-color: #000;
+  z-index: 998;
   border-radius: 5px;
   overflow: hidden;
+  height: 100%;
+  width: 200px;
 }
-#Statistics textarea{
+
+#Statistics textarea {
+  width: 100%;
   color: red;
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+  line-height: 1.5;
+  padding: 10px 10px 10px;
+  border-radius: 3px;
+  font: 13px Tahoma, cursive;
+  transition: box-shadow 0.5s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .popupContainer {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, '微软雅黑';
 }
+
 .popupContainer .name {
   color: #000;
   font-size: 16px;
@@ -379,14 +471,17 @@ body {
   font-weight: lighter;
   font-family: HyliaSerif, '微软雅黑';
 }
+
 .popupContainer .name:nth-of-type(2) {
   margin-top: 10px;
   border-top: solid 1px #eee;
   padding-top: 10px;
 }
+
 .popupContainer .buttonContainer {
   padding-top: 6px;
 }
+
 .popupContainer .buttonContainer a,
 .popupContainer .buttonContainer span {
   display: inline-block;
@@ -395,10 +490,12 @@ body {
   cursor: pointer;
   margin-right: 10px;
 }
+
 .popupContainer .buttonContainer a.markButton.important,
 .popupContainer .buttonContainer span.markButton.important {
   color: #e6411c;
 }
+
 .popupContainer .buttonContainer a:hover,
 .popupContainer .buttonContainer span:hover {
   color: deepskyblue;
